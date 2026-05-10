@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemAce - Master Chemistry with Miss Teng - O-Level & N-Level Specialist Singapore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2E5090;
+            --primary-light: #3D6BB9;
+            --accent: #FF6B35;
+            --accent-light: #FFB84D;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --text: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo-image {
+            height: 60px;
+            width: auto;
+            max-width: 300px;
+            display: block;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            display: block;
+            margin-top: -0.3rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-cta {
+            background-color: var(--accent);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .nav-cta:hover {
+            background-color: #ff5722;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            animation: slideUp 0.8s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: slideUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .credentials-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,107,53,0.3);
+            margin-top: 2rem;
+            animation: slideUp 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .credentials-badge p {
+            font-size: 0.95rem;
+            margin: 0.3rem 0;
+            opacity: 0.9;
+        }
+
+        .credentials-badge strong {
+            color: var(--accent-light);
+            font-weight: 700;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: slideUp 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff5722;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,107,53,0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+        }
+
+        /* Credentials Section */
+        .credentials-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            background: linear-gradient(135deg, var(--light) 0%, #f5f7fa 100%);
+            border-radius: 12px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .credential-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid var(--accent);
+        }
+
+        .credential-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .credential-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .credential-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .credential-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Teaching Methodology Section */
+        .methodology {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .methodology-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .methodology-intro {
+            background: linear-gradient(135deg, rgba(46, 80, 144, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 6px solid var(--accent);
+        }
+
+        .methodology-intro h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .methodology-intro p {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-left: 5px solid var(--accent);
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .step h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 10px;
+            transition: all 0.3s;
+            border-left: 4px solid var(--accent);
+        }
+
+        .expertise-item:hover {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .expertise-icon {
+            font-size: 2rem;
+            min-width: 60px;
+        }
+
+        .expertise-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .expertise-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Results Section */
+        .results {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .results-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results .section-title {
+            color: white;
+        }
+
+        .results .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,107,53,0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .result-card:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,107,53,0.4);
+        }
+
+        .result-metric {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Levels Section */
+        .levels {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .levels-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .level-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .level-card:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(46, 80, 144, 0.2);
+        }
+
+        .level-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .level-card:hover h3 {
+            color: white;
+        }
+
+        .level-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .level-card li {
+            padding: 0.5rem 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .level-card:hover li {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .level-price {
+            margin-top: 2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .level-card:hover .level-price {
+            color: var(--accent-light);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .contact-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,107,53,0.2);
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: white;
+            color: var(--text);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff5722;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,107,53,0.3);
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+            font-weight: 600;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .floating-whatsapp:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsive floating button */
+        @media (max-width: 768px) {
+            .floating-whatsapp {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Mock Papers Section */
+        .mock-papers {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .mock-papers-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mock-papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .mock-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mock-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            border-color: var(--accent);
+        }
+
+        .mock-card-featured {
+            border: 3px solid var(--accent);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.02) 0%, rgba(46, 80, 144, 0.02) 100%);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .mock-card-featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .mock-card-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .mock-card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .mock-card-header h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .mock-subtext {
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .mock-card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responsive Design for Mock Papers */
+        @media (max-width: 768px) {
+            .mock-papers {
+                padding: 3rem 2rem;
+            }
+
+            .mock-papers-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .mock-card-featured {
+                transform: scale(1);
+            }
+
+            .mock-card-featured:hover {
+                transform: translateY(-8px);
+            }
+        }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .credentials-grid,
+            .methodology-steps,
+            .expertise-grid,
+            .results-grid,
+            .testimonials-grid,
+            .levels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-links a {
+                margin: 0;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div>
+                <img src="ChemAce_logo.png" alt="ChemAce Chemistry Tuition" class="logo-image">
+            </div>
+            <ul>
+                <li><a href="#credentials">Credentials</a></li>
+                <li><a href="#methodology">Approach</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#mock-papers">Mock Papers</a></li>
+                <li><a href="https://wa.me/6594279964?text=Hi%20I%20am%20interested%20in%20your%20Chemistry%20tuition%20services" class="nav-cta" target="_blank">WhatsApp Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Master Chemistry with ChemAce</h1>
+            <div class="hero-subtitle">Expert O & N-Level Tuition by Miss Teng | Ex-MOE Teacher Leader | 25 Years Experience</div>
+            <p>Proven teaching methodology backed by 25 years of MOE classroom experience and conference-presented research</p>
+            
+            <div class="credentials-badge">
+                <p><strong>✓ Former MOE Teacher Leader</strong> with 25 years classroom experience</p>
+                <p><strong>✓ Multiple Teaching Excellence Awards</strong> for innovative pedagogy</p>
+                <p><strong>✓ Conference Speaker</strong> on chemistry education methodology</p>
+                <p><strong>✓ Specialist</strong> in Secondary Chemistry (Sec 3, 4, 5)</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/6594279964?text=Hi%20I%20am%20interested%20in%20your%20Chemistry%20tuition%20services" class="btn btn-primary" target="_blank">
+                    Message on WhatsApp
+                </a>
+                <button class="btn btn-secondary" onclick="document.querySelector('#methodology').scrollIntoView({behavior: 'smooth'})">
+                    Learn My Approach
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="credentials-section" id="credentials">
+        <h2 class="section-title">My Credentials & Expertise</h2>
+        <p class="section-subtitle">Why 25 years of MOE experience matters</p>
+        
+        <div class="credentials-grid">
+            <div class="credential-card">
+                <div class="credential-icon">🏅</div>
+                <h3>MOE Teacher Leader</h3>
+                <p>25 years serving in MOE schools, including leadership roles. Deep understanding of MOE chemistry syllabus, exam standards, and educational excellence expectations.</p>
+            </div>
+
+            <div class="credential-card">
+                <div class="credential-icon">🏆</div>
+                <h3>Award-Winning Educator</h3>
+                <p>Multiple awards for teaching excellence and innovative pedagogy. Recognized by MOE and educational institutions for transforming student engagement and understanding.</p>
+            </div>
+
+            <div class="credential-card">
+                <div class="credential-icon">🎤</div>
+                <h3>Conference Presenter</h3>
+                <p>Presented research on chemistry teaching methodology at education conferences. Contributes to the broader understanding of effective chemistry instruction.</p>
+            </div>
+
+            <div class="credential-card">
+                <div class="credential-icon">📚</div>
+                <h3>Curriculum Expert</h3>
+                <p>Helped develop chemistry curricula aligned with MOE standards. Understand exactly what examiners expect and how to prepare students for success.</p>
+            </div>
+
+            <div class="credential-card">
+                <div class="credential-icon">👥</div>
+                <h3>Teacher Mentor</h3>
+                <p>Trained other chemistry teachers in effective pedagogy. Ability to explain complex concepts clearly stems from extensive mentoring experience.</p>
+            </div>
+
+            <div class="credential-card">
+                <div class="credential-icon">🔬</div>
+                <h3>O & N-Level Specialist</h3>
+                <p>Specialized focus on Secondary 3, 4, and 5 chemistry. Know the exact exam format, difficult topics, and proven strategies for these critical levels.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Matters Section -->
+    <section class="expertise">
+        <h2 class="section-title">What 25 Years of MOE Experience Means for You</h2>
+        <p class="section-subtitle">Your child benefits from expert understanding of education standards and proven teaching methods</p>
+
+        <div class="expertise-grid">
+            <div class="expertise-item">
+                <div class="expertise-icon">✓</div>
+                <div>
+                    <h4>Understands Exam Expectations</h4>
+                    <p>With 25 years in MOE schools, I know exactly what examiners expect and how to prepare students systematically.</p>
+                </div>
+            </div>
+
+            <div class="expertise-item">
+                <div class="expertise-icon">✓</div>
+                <div>
+                    <h4>Research-Backed Methodology</h4>
+                    <p>Teaching approach is based on education research and refined through 25 years of MOE classroom experience.</p>
+                </div>
+            </div>
+
+            <div class="expertise-item">
+                <div class="expertise-icon">✓</div>
+                <div>
+                    <h4>Award-Winning Pedagogy</h4>
+                    <p>Multiple teaching excellence awards demonstrate methods that work for diverse learners, not just some students.</p>
+                </div>
+            </div>
+
+            <div class="expertise-item">
+                <div class="expertise-icon">✓</div>
+                <div>
+                    <h4>Deep Content Mastery</h4>
+                    <p>25 years teaching chemistry at the highest levels. Can answer any question and explain any concept with clarity and confidence.</p>
+                </div>
+            </div>
+
+            <div class="expertise-item">
+                <div class="expertise-icon">✓</div>
+                <div>
+                    <h4>Specialized in Sec 3-5</h4>
+                    <p>Not a generalist. Specialist focus on O and N-Level chemistry means deep expertise in exactly what your child needs.</p>
+                </div>
+            </div>
+
+            <div class="expertise-item">
+                <div class="expertise-icon">✓</div>
+                <div>
+                    <h4>Mentored Other Teachers</h4>
+                    <p>If I could teach other teachers, I can certainly teach your child. Ability to break down complex ideas comes from this experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Methodology Section -->
+    <section class="methodology" id="methodology">
+        <div class="methodology-content">
+            <h2 class="section-title">My Teaching Approach</h2>
+            <p class="section-subtitle">Research-backed methodology refined over 25 years</p>
+
+            <div class="methodology-intro">
+                <h2>Proven System for Chemistry Mastery</h2>
+                <p>After 25 years in MOE classrooms and helping develop chemistry curricula, I've perfected a 4-step approach specifically designed for O and N-Level chemistry students. This system has been refined through award-winning work, tested on hundreds of students, and proven to deliver consistent results.</p>
+            </div>
+
+            <div class="methodology-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Diagnostic Assessment</h3>
+                    <p><strong>First Lesson:</strong> I conduct a thorough diagnostic to understand exactly where knowledge gaps exist. This isn't generic—I assess your child's specific learning profile.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Conceptual Foundation</h3>
+                    <p><strong>Building Understanding:</strong> Chemistry is about understanding, not memorization. I teach the "why" behind each concept so students can solve problems they've never seen.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Exam Strategy Training</h3>
+                    <p><strong>Exam Techniques:</strong> Understanding concepts is step 1. Applying them under exam pressure is step 2. I teach exam-specific strategies that students won't learn anywhere else.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Mastery Through Practice</h3>
+                    <p><strong>Independent Confidence:</strong> Structured practice with feedback builds independence and confidence. By exam day, students don't need me—they trust their own problem-solving.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2.5rem; background: var(--light); border-radius: 12px; border-left: 6px solid var(--accent); text-align: center;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem;">Why This System Works</h3>
+                <p style="font-size: 1rem; color: #666; line-height: 1.8;">
+                    This isn't generic tutoring. It's a proven system developed and refined over 25 years in MOE classrooms. 
+                    It's been tested on hundreds of students, earned teaching excellence awards, and proven to transform 
+                    struggling students into confident chemistry achievers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results" id="results">
+        <div class="results-content">
+            <h2 class="section-title">Proven Results</h2>
+            <p class="section-subtitle">What 25 years of experience and expert pedagogy deliver</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-metric">95%</div>
+                    <div class="result-description">Students show measurable grade improvement</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-metric">3 months</div>
+                    <div class="result-description">Average time to significant improvement</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-metric">2 grades</div>
+                    <div class="result-description">Average improvement in grade level</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-metric">100%</div>
+                    <div class="result-description">Students report better understanding</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Levels Section -->
+    <section class="levels" id="levels">
+        <div class="levels-content">
+            <h2 class="section-title">I Specialize in Secondary Chemistry</h2>
+            <p class="section-subtitle">Expert focus on O & N-Level preparation</p>
+
+            <div class="levels-grid">
+                <div class="level-card">
+                    <h3>Secondary 3 Chemistry</h3>
+                    <ul>
+                        <li>📚 Foundation Building</li>
+                        <li>📚 MOE Syllabus Alignment</li>
+                        <li>📚 Concept Mastery</li>
+                        <li>📚 Exam Readiness</li>
+                    </ul>
+                    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Individual (1.5 hrs)</p>
+                            <p style="color: var(--accent); font-size: 1.2rem; font-weight: 700; margin: 0;">$120/session</p>
+                            <p style="color: #FF6B35; font-size: 0.85rem; font-weight: 600; margin-top: 0.3rem;">4 lessons/month = $480</p>
+                        </div>
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem;">
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.8rem; font-size: 0.95rem;">Group Sessions (2 hrs)</p>
+                            <p style="color: #FF6B35; font-weight: 600; margin: 0.4rem 0;">2 students: $80/student = $320/month</p>
+                            <p style="color: #FF6B35; font-weight: 600; margin: 0.4rem 0;">3 students: $75/student = $300/month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level-card">
+                    <h3>Secondary 4 O-Level</h3>
+                    <ul>
+                        <li>🏆 Intensive Exam Prep</li>
+                        <li>🏆 Grade Improvement Focus</li>
+                        <li>🏆 Past Paper Practice</li>
+                        <li>🏆 Exam Strategy Training</li>
+                    </ul>
+                    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Individual (1.5 hrs)</p>
+                            <p style="color: var(--accent); font-size: 1.2rem; font-weight: 700; margin: 0;">$142.50/session</p>
+                            <p style="color: #FF6B35; font-size: 0.85rem; font-weight: 600; margin-top: 0.3rem;">4 lessons/month = $570</p>
+                        </div>
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem;">
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.8rem; font-size: 0.95rem;">Group Sessions (2 hrs)</p>
+                            <p style="color: #FF6B35; font-weight: 600; margin: 0.4rem 0;">2 students: $95/student = $380/month</p>
+                            <p style="color: #FF6B35; font-weight: 600; margin: 0.4rem 0;">3 students: $90/student = $360/month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level-card">
+                    <h3>Secondary 5 N-Level</h3>
+                    <ul>
+                        <li>⭐ N-Level Specialization</li>
+                        <li>⭐ Advanced Problem-Solving</li>
+                        <li>⭐ Targeted Exam Prep</li>
+                        <li>⭐ Final Grade Optimization</li>
+                    </ul>
+                    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Individual (1.5 hrs)</p>
+                            <p style="color: var(--accent); font-size: 1.2rem; font-weight: 700; margin: 0;">$142.50/session</p>
+                            <p style="color: #FF6B35; font-size: 0.85rem; font-weight: 600; margin-top: 0.3rem;">4 lessons/month = $570</p>
+                        </div>
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem;">
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.8rem; font-size: 0.95rem;">Group Sessions (2 hrs)</p>
+                            <p style="color: #FF6B35; font-weight: 600; margin: 0.4rem 0;">2 students: $95/student = $380/month</p>
+                            <p style="color: #FF6B35; font-weight: 600; margin: 0.4rem 0;">3 students: $90/student = $360/month</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mock Paper Packages Section -->
+    <section class="mock-papers" id="mock-papers">
+        <div class="mock-papers-content">
+            <h2 class="section-title">Mock Paper Packages</h2>
+            <p class="section-subtitle">Exam-condition practice with expert feedback</p>
+
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                <p style="text-align: center; color: #666; font-size: 1.05rem; margin-bottom: 3rem; line-height: 1.8;">
+                    Prepare for your O & N-Level Chemistry exam with realistic practice under exam conditions. 
+                    Get detailed feedback and strategic coaching from a 25-year MOE expert. 
+                    Track your improvement and build confidence before the real exam.
+                </p>
+
+                <div class="mock-papers-grid">
+                    <!-- Single Paper -->
+                    <div class="mock-card">
+                        <div class="mock-card-header">
+                            <h3>Single Paper</h3>
+                            <p class="mock-subtext">Quick Check</p>
+                        </div>
+                        <div class="mock-card-content">
+                            <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                                <li style="padding: 0.5rem 0; color: #666;">✓ 1 full mock paper</li>
+                                <li style="padding: 0.5rem 0; color: #666;">✓ Exam-condition completion</li>
+                                <li style="padding: 0.5rem 0; color: #666;">✓ Detailed marking & feedback</li>
+                                <li style="padding: 0.5rem 0; color: #666;">✓ Topic analysis</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                                <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Pricing:</p>
+                                <p style="color: var(--accent); font-size: 1.3rem; font-weight: 700;">Sec 3: $50</p>
+                                <p style="color: var(--accent); font-size: 1.3rem; font-weight: 700;">Sec 4-5: $60</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bundle of 3 - Featured -->
+                    <div class="mock-card mock-card-featured">
+                        <div class="mock-card-badge">RECOMMENDED</div>
+                        <div class="mock-card-header">
+                            <h3>Bundle of 3</h3>
+                            <p class="mock-subtext">Popular Choice</p>
+                        </div>
+                        <div class="mock-card-content">
+                            <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                                <li style="padding: 0.5rem 0; color: #666;">✓ 3 papers over 5-8 weeks</li>
+                                <li style="padding: 0.5rem 0; color: #666;">✓ Exam-condition completion</li>
+                                <li style="padding: 0.5rem 0; color: #666;">✓ Expert marking (48-hour turnaround)</li>
+                                <li style="padding: 0.5rem 0; color: #666;">✓ Progress tracking</li>
+                                <li style="padding: 0.5rem 0; color: #666;">✓ Strategy coaching (45 min)</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid var(--accent);">
+                                <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Pricing:</p>
+                                <p style="color: var(--accent); font-size: 1.3rem; font-weight: 700;">Sec 3: $130</p>
+                                <p style="color: var(--accent); font-size: 1.3rem; font-weight: 700;">Sec 4-5: $160</p>
+                                <p style="font-size: 0.85rem; color: #FF6B35; margin-top: 0.8rem;">💰 Save $20 vs individual</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intensive 5-Paper -->
+                    <!-- Removed -->
+
+                    <!-- Crash Course -->
+                    <!-- Removed -->
+                </div>
+
+                <div style="margin-top: 3rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(46, 80, 144, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%); border-radius: 12px; border-left: 6px solid var(--accent); text-align: center;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem;">Why Choose Our Mock Papers?</h3>
+                    <p style="font-size: 1rem; color: #666; line-height: 1.8; margin: 0;">
+                        25 years of MOE expertise means you get feedback from someone who knows exactly what examiners expect. 
+                        Our mock papers aren't just practice—they're strategic preparation designed to build confidence and 
+                        deliver measurable improvement. See your progress paper by paper, and walk into exam day ready.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="contact-content">
+            <h2>Ready to Master Chemistry with Miss Teng?</h2>
+            <p>Message Miss Teng on WhatsApp to discuss your child's chemistry goals and how we can work together.</p>
+
+            <div style="margin-top: 3rem; padding: 3rem; background: rgba(255,255,255,0.15); border-radius: 12px; border: 2px solid rgba(255,255,255,0.3);">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: white;">
+                    <strong>💬 Contact Me on WhatsApp</strong>
+                </p>
+                <a href="https://wa.me/6594279964?text=Hi%20I%20am%20interested%20in%20your%20Chemistry%20tuition%20services%20for%20Secondary%20Chemistry" 
+                   target="_blank" 
+                   class="btn btn-primary" 
+                   style="font-size: 1.1rem; padding: 1.2rem 3rem;">
+                    📱 WhatsApp: +65 9427 9964
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6594279964?text=Hi%20I%20am%20interested%20in%20your%20Chemistry%20tuition%20services" 
+       target="_blank" 
+       class="floating-whatsapp">
+        💬 WhatsApp
+    </a>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const level = document.getElementById('level').value;
+            const goal = document.getElementById('goal').value;
+
+            alert(`Thank you, ${name}! I'll contact you at ${phone} soon to discuss your child's chemistry journey.`);
+            
+            document.querySelector('.contact-form').reset();
+            
+            console.log({ name, phone, level, goal });
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.credential-card, .step, .level-card, .testimonial-card, .expertise-item').forEach(card => {
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
